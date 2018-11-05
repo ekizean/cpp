@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import Projectstatus from "./Projectstatus";
 
-class Project extends Component {
-  render() {
+const Project = (props) => {
     return (
       <div className="Project">
-        <h1>{this.props.title}</h1>
-        <Projectstatus status={this.props.status} />
-        <p>{this.props.description}</p>
+        <h1>{props.title}</h1>
+        <Projectstatus status={props.status} changeProjectStatus={props.changeProjectStatus} id={props.id}/>
+        <p>{props.description}</p>
         <p>Radera</p>
       </div>
     );
-  }
 }
 
 export default Project;
