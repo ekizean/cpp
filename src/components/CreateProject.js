@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import uuid from "uuid";
 
 class CreateProject extends Component {
   handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
+  resetFields = this.resetFields.bind(this);
 
   state = {
     title: "",
@@ -18,8 +20,17 @@ class CreateProject extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createProject(this.state);
-    this.setState({
+    this.setState(
+      () => ({ id: uuid() }), 
+      () => {
+        this.props.createProject(this.state);
+        this.resetFields();
+      }
+    )
+  }
+
+  resetFields() {
+    this.setState({  
       title: "",
       description: "",
       status: "Ej påbörjad"

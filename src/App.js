@@ -7,15 +7,18 @@ import CreateProject from "./components/CreateProject";
 class App extends Component {
   changeProjectStatus = this.changeProjectStatus.bind(this);
   createProject = this.createProject.bind(this);
+  deleteProject = this.deleteProject.bind(this);
   
   state = {
     projectArray: [
       {
+        id: 0,
         title: "SAPSA",
         description: "VR is King",
         status: "Ej påbörjad",
       },
       {
+        id: 1,
         title: "DataTjej",
         description: "Jobbportal",
         status: "Påbörjad",
@@ -40,12 +43,24 @@ class App extends Component {
     })
   }
 
+  deleteProject(id) {
+    this.setState(
+      {
+        projectArray: this.state.projectArray.filter((project) => project.id !== id)
+      }
+    )
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
         <CreateProject createProject={this.createProject}/>
-        <Projectlist projectArray={this.state.projectArray} changeProjectStatus={this.changeProjectStatus}/>
+        <Projectlist 
+          projectArray={this.state.projectArray} 
+          changeProjectStatus={this.changeProjectStatus} 
+          deleteProject={this.deleteProject}
+        />
       </div>
     );
   }
