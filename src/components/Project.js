@@ -11,7 +11,7 @@ const Project = props => {
         id={props.id}
       />
       <p>{props.description}</p>
-      <button onClick={this.props.deleteProject}>Radera</button>
+      <button>Radera</button>
     </div>
   );
 };
