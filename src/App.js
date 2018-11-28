@@ -3,6 +3,7 @@ import "./App.css";
 import Projectlist from "./components/Projectlist";
 import Header from "./components/Header";
 import CreateProject from "./components/CreateProject";
+import { database } from './firebase/firebase';
 
 class App extends Component {
   changeProjectStatus = this.changeProjectStatus.bind(this);
@@ -38,9 +39,12 @@ class App extends Component {
   }
 
   createProject(newProject) {
-    this.setState({ 
-      projectArray: [...this.state.projectArray, newProject] 
-    })
+    database.ref('projects').set(newProject).then(
+      this.setState({ 
+        projectArray: [...this.state.projectArray, newProject] 
+      })
+    );
+
   }
 
   deleteProject(id) {
