@@ -57,8 +57,6 @@ class App extends Component {
     });
   }
 
-  deleteProject(e) {}
-
   render() {
     return (
       <div className="App">

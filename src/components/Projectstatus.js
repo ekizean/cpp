@@ -1,11 +1,13 @@
 import React from "react";
 
-const Projectstatus = (props) => {
+const Projectstatus = props => {
   return (
     <div className="Projectstatus">
-      <button onClick={() => props.changeProjectStatus(props.id)}>{props.status}</button>
+      <button onClick={() => props.changeProjectStatus(props.id)}>
+        {props.status}
+      </button>
     </div>
   );
-}
+};
 
 export default Projectstatus;

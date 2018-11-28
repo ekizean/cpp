@@ -21,16 +21,16 @@ class CreateProject extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState(
-      () => ({ id: uuid() }), 
+      () => ({ id: uuid() }),
       () => {
         this.props.createProject(this.state);
         this.resetFields();
       }
-    )
+    );
   }
 
   resetFields() {
-    this.setState({  
+    this.setState({
       title: "",
       description: "",
       status: "Ej påbörjad"
