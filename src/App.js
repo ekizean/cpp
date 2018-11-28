@@ -3,19 +3,23 @@ import "./App.css";
 import Projectlist from "./components/Projectlist";
 import Header from "./components/Header";
 import CreateProject from "./components/CreateProject";
+import { database } from "./firebase/firebase";
 
 class App extends Component {
   changeProjectStatus = this.changeProjectStatus.bind(this);
   createProject = this.createProject.bind(this);
+  deleteProject = this.deleteProject.bind(this);
 
   state = {
     projectArray: [
       {
+        id: 0,
         title: "SAPSA",
         description: "VR is King",
         status: "Ej påbörjad"
       },
       {
+        id: 1,
         title: "DataTjej",
         description: "Jobbportal",
         status: "Påbörjad"
@@ -37,8 +41,19 @@ class App extends Component {
   }
 
   createProject(newProject) {
+    database
+      .ref("projects")
+      .set(newProject)
+      .then(
+        this.setState({
+          projectArray: [...this.state.projectArray, newProject]
+        })
+      );
+  }
+
+  deleteProject(id) {
     this.setState({
-      projectArray: [...this.state.projectArray, newProject]
+      projectArray: this.state.projectArray.filter(project => project.id !== id)
     });
   }
 
@@ -52,6 +67,7 @@ class App extends Component {
         <Projectlist
           projectArray={this.state.projectArray}
           changeProjectStatus={this.changeProjectStatus}
+          deleteProject={this.deleteProject}
         />
       </div>
     );

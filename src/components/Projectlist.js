@@ -8,11 +8,12 @@ class Projectlist extends Component {
       <div className="Projectlist">
         {this.props.projectArray.map((p, i) => (
           <Project
-            title={p.title}
-            description={p.description}
-            status={p.status}
-            id={i}
-            changeProjectStatus={this.props.changeProjectStatus}
+            title = {p.title}
+            description = {p.description}
+            status = {p.status}
+            id = {p.id}
+            changeProjectStatus = {this.props.changeProjectStatus}
+            deleteProject = {this.props.deleteProject}
           />
         ))}
       </div>
