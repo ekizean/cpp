@@ -3,7 +3,7 @@ import "./App.css";
 import Projectlist from "./components/Projectlist";
 import Header from "./components/Header";
 import CreateProject from "./components/CreateProject";
-import { database } from "./firebase/firebase";
+import Database from "./firebase/firebase";
 
 class App extends Component {
   changeProjectStatus = this.changeProjectStatus.bind(this);
@@ -11,20 +11,7 @@ class App extends Component {
   deleteProject = this.deleteProject.bind(this);
 
   state = {
-    projectArray: [
-      {
-        id: 0,
-        title: "SAPSA",
-        description: "VR is King",
-        status: "Ej påbörjad"
-      },
-      {
-        id: 1,
-        title: "DataTjej",
-        description: "Jobbportal",
-        status: "Påbörjad"
-      }
-    ]
+    projectArray: []
   };
 
   changeProjectStatus(id) {
@@ -41,9 +28,9 @@ class App extends Component {
   }
 
   createProject(newProject) {
-    database
+    Database
       .ref("projects")
-      .set(newProject)
+      .push(newProject)
       .then(
         this.setState({
           projectArray: [...this.state.projectArray, newProject]
@@ -52,8 +39,32 @@ class App extends Component {
   }
 
   deleteProject(id) {
-    this.setState({
-      projectArray: this.state.projectArray.filter(project => project.id !== id)
+    Database.ref(`projects/${id}`).remove().then(
+      this.setState({
+        projectArray: this.state.projectArray.filter(project => project.id !== id)
+      })
+    );
+
+  }
+
+  componentDidMount() {
+    Database.ref("projects").once("value").then((snapshot) => {
+
+      const projectArray = [];
+
+      snapshot.forEach((snapshotChild) => {
+        projectArray.push({
+          id: snapshotChild.key,
+          ...snapshotChild.val()
+        });
+      });
+
+      this.setState({
+        projectArray
+      }, () => {console.log(this.state);});
+
+      
+      
     });
   }
 

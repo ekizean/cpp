@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import uuid from "uuid";
 
 class CreateProject extends Component {
   handleChange = this.handleChange.bind(this);
@@ -21,7 +20,6 @@ class CreateProject extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState(
-      () => ({ id: uuid() }),
       () => {
         this.props.createProject(this.state);
         this.resetFields();

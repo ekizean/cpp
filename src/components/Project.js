@@ -4,14 +4,14 @@ import Projectstatus from "./Projectstatus";
 const Project = props => {
   return (
     <div className="Project">
-      <h1>{props.title}</h1>
+      <h1>{props.project.title}</h1>
       <Projectstatus
-        status={props.status}
+        status={props.project.status}
         changeProjectStatus={props.changeProjectStatus}
-        id={props.id}
+        id={props.project.id}
       />
-      <p>{props.description}</p>
-      <button onClick={() => props.deleteProject(props.id)}>Radera</button>
+      <p>{props.project.description}</p>
+      <button onClick={() => props.deleteProject(props.project.id)}>Radera</button>
     </div>
   );
 };
