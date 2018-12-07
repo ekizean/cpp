@@ -4,6 +4,7 @@ import Projectlist from "./components/Projectlist";
 import Header from "./components/Header";
 import CreateProject from "./components/CreateProject";
 import Database from "./firebase/firebase";
+import { finished } from "stream";
 
 class App extends Component {
   changeProjectStatus = this.changeProjectStatus.bind(this);
@@ -14,17 +15,26 @@ class App extends Component {
     projectArray: []
   };
 
-  changeProjectStatus(id) {
-    this.setState(prevState => {
-      prevState.projectArray[0].status =
-        prevState.projectArray[id].status === "Pågående"
-          ? "Ej påbörjad"
-          : "Pågående";
+  changeProjectStatus(id, status) {
+    let statusText = status === "Pågående" ? "Ej påbörjad" : "Pågående";
 
-      return {
-        prevState
-      };
-    });
+    Database
+      .ref(`projects/${id}`)
+      .update({ status: statusText })
+
+    this.setState(
+      prevState => {
+        return {
+          projectArray: prevState.projectArray.map(p => { 
+            if (p.id == id) {
+              p.status = statusText;
+            }
+            
+            return p; 
+          })
+        };
+      }
+    );
   }
 
   createProject(newProject) {
