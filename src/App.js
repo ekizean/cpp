@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.scss";
 import Projectlist from "./components/Projectlist";
 import Header from "./components/Header";
 import CreateProject from "./components/CreateProject";
