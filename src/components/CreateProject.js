@@ -41,6 +41,7 @@ class CreateProject extends Component {
         Create project stuff
         <form onSubmit={this.handleSubmit}>
           <input
+            className="createProjectField"
             name="title"
             type="text"
             placeholder="Titel"
@@ -48,6 +49,7 @@ class CreateProject extends Component {
             value={this.state.title}
           />
           <input
+          className="createProjectField"
             name="description"
             type="text"
             placeholder="Beskrivning"

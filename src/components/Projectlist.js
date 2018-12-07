@@ -1,21 +1,24 @@
 import React, { Component } from "react";
 import Project from "./Project";
 
-class Projectlist extends Component {
+class ProjectList extends Component {
   render() {
     return (
-      <div className="Projectlist">
-        {this.props.projectArray.map((p, i) => (
-          <Project
-            project={p}
-            changeProjectStatus={this.props.changeProjectStatus}
-            deleteProject={this.props.deleteProject}
-            key={i}
-          />
-        ))}
+      
+      <div className="page-container">
+        <div className="projectList">
+          {this.props.projectArray.map((p, i) => (
+            <Project
+              project={p}
+              changeProjectStatus={this.props.changeProjectStatus}
+              deleteProject={this.props.deleteProject}
+              key={i}
+            />
+          ))}
+        </div>
       </div>
     );
   }
 }
 
-export default Projectlist;
+export default ProjectList;

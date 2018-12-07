@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "./App.scss";
-import Projectlist from "./components/Projectlist";
+import ProjectList from "./components/ProjectList";
 import Header from "./components/Header";
 import CreateProject from "./components/CreateProject";
 import Database from "./firebase/firebase";
 import { finished } from "stream";
+import Footer from "./components/Footer";
 
 class App extends Component {
   changeProjectStatus = this.changeProjectStatus.bind(this);
@@ -83,11 +84,14 @@ class App extends Component {
       <div className="App">
         <Header />
         <CreateProject createProject={this.createProject} />
-        <Projectlist
-          projectArray={this.state.projectArray}
-          changeProjectStatus={this.changeProjectStatus}
-          deleteProject={this.deleteProject}
-        />
+        <main>
+          <ProjectList
+            projectArray={this.state.projectArray}
+            changeProjectStatus={this.changeProjectStatus}
+            deleteProject={this.deleteProject}
+            />
+        </main>
+        <Footer />
       </div>
     );
   }
