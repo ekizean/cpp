@@ -11,7 +11,11 @@ const Project = props => {
         id={props.project.id}
       />
       <p className="project-description">{props.project.description}</p>
-      <button className="project-delete" onClick={() => props.deleteProject(props.project.id)}><i className="fa fa-trash"></i></button>
+      <div class="project-delete">
+        <button className="project-delete-button" onClick={() => props.deleteProject(props.project.id)}>
+          <i className="fa fa-trash"></i>
+        </button>
+      </div>
     </div>
   );
 };

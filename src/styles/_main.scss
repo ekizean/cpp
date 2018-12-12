@@ -10,6 +10,8 @@ main {
     padding: 20px 40px;
     text-align: left;
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     h2 {
         margin-bottom: 10px;
@@ -17,17 +19,18 @@ main {
     }
 
     &-delete {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    &-delete-button {
         background: none;
         border: none;
         color: darken($primary-grey, 10);
         border-radius: 100%;
         margin-top: 20px;
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        // position: absolute;
-        // right: 20px;
-        // bottom: 20px;
         cursor: pointer;                    
 
         &:hover {
@@ -35,6 +38,7 @@ main {
         }
 
     }
+
 
     &-status {
         background: none;
