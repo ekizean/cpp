@@ -1,67 +1,75 @@
 main {
-    background-color: $primary-grey;
-    padding: 40px 0;
+  background-color: $primary-grey;
+  padding: 40px 0;
 }
 
 .project {
-    background-color: white;
-    border-radius: 14px;
-    text-align: center;
-    padding: 20px 40px;
-    text-align: left;
-    position: relative;
+  background-color: white;
+  border-radius: 14px;
+  text-align: center;
+  padding: 20px 40px;
+  text-align: left;
+  position: relative;
 
-    h2 {
-        margin-bottom: 10px;
-        font-size: 2.8rem;
+  h2 {
+    margin-bottom: 10px;
+    font-size: 2.8rem;
+  }
+
+  &-delete {
+    background: none;
+    border: none;
+    color: darken($primary-grey, 10);
+    border-radius: 100%;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    // position: absolute;
+    // right: 20px;
+    // bottom: 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: darken($primary-grey, 20);
     }
+  }
 
-    &-delete {
-        background: none;
-        border: none;
-        color: darken($primary-grey, 10);
-        border-radius: 100%;
-        margin-top: 20px;
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        // position: absolute;
-        // right: 20px;
-        // bottom: 20px;
-        cursor: pointer;                    
+  &-status {
+    background: none;
+    border: none;
+    font-style: italic;
+    color: #333;
+    cursor: pointer;
+  }
 
-        &:hover {
-            color: darken($primary-grey, 20);
-        }
+  &-description {
+    margin-top: 20px;
+    font-size: 1.4rem;
+  }
+}
 
-    }
-
-    &-status {
-        background: none;
-        border: none;
-        font-style: italic;
-        color: #333;
-        cursor: pointer;
-    }
-
-    &-description {
-        margin-top: 20px;
-        font-size: 1.4rem;
-    }
+.Modal {
+  @extend .project;
+  max-width: 550px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .projectList {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 40px 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 40px;
 }
 
 .fa {
-    font-size: 30px;
+  font-size: 30px;
 }
 
-@media (max-width: 750px){
-    .projectList {
-        grid-template-columns: repeat(1,1fr);
-    }
+@media (max-width: 750px) {
+  .projectList {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
