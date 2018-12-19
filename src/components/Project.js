@@ -3,7 +3,7 @@ import Projectstatus from "./Projectstatus";
 
 const Project = props => {
   return (
-    <div className="project">
+    <div className="project" onClick = {() => props.showModal("view" , props.project)}>
       <h2>{props.project.title}</h2>
       <Projectstatus
         status={props.project.status}

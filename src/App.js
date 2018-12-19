@@ -2,21 +2,22 @@ import React, { Component } from "react";
 import "./App.scss";
 import ProjectList from "./components/ProjectList";
 import Header from "./components/Header";
-import CreateProject from "./components/CreateProject";
+import CreateProject from "./components/ProjectDetail";
 import Database from "./firebase/firebase";
 import { finished } from "stream";
 import Footer from "./components/Footer";
 import Modal from "react-modal";
+import ProjectDetail from "./components/ProjectDetail";
 
 class App extends Component {
   changeProjectStatus = this.changeProjectStatus.bind(this);
   createProject = this.createProject.bind(this);
   deleteProject = this.deleteProject.bind(this);
-  showOverview = this.showOverview.bind(this);
+  showModal = this.showModal.bind(this);
 
   state = {
     projectArray: [],
-    showOverview: false
+    modalState:  false
   };
 
   changeProjectStatus(id, status) {
@@ -37,9 +38,10 @@ class App extends Component {
     });
   }
 
-  showOverview() {
+  showModal(mode, projectData = null) {
     this.setState({
-      showOverview: true
+      modalState: mode,
+      currentProject: projectData
     });
   }
 
@@ -47,7 +49,7 @@ class App extends Component {
     Database.ref("projects")
       .push(newProject)
       .then(this.readProjectsFromDatabase());
-    this.setState({ showOverview: false });
+    this.setState({ modalState: false });
   }
 
   deleteProject(id) {
@@ -88,21 +90,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header showOverview={this.showOverview} />
+        <Header showModal={this.showModal} />
         <main>
           <Modal
+            ariaHideApp={false}
             className="Modal"
-            isOpen={this.state.showOverview}
-            onRequestClose={() => this.setState({ showOverview: false })}
+            isOpen={this.state.modalState != false}
+            onRequestClose={() => this.setState({ modalState: false })}
           >
-            {this.state.showOverview && (
-              <CreateProject createProject={this.createProject} />
-            )}
+
+              <ProjectDetail 
+              createProject={this.createProject} 
+              modalState = {this.state.modalState} 
+              currentProject = {this.state.currentProject}
+              showModal = {this.showModal}
+              />
+
           </Modal>
           <ProjectList
             projectArray={this.state.projectArray}
             changeProjectStatus={this.changeProjectStatus}
             deleteProject={this.deleteProject}
+            showModal = {this.showModal}
           />
         </main>
         <Footer />

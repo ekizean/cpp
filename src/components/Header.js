@@ -17,7 +17,7 @@ class Header extends Component {
               <input className="searchButton" value="Sök" type="submit" />
             </div>
           </form>
-          <button className="addButton" onClick={this.props.showOverview}>
+          <button className="addButton" onClick={() => this.props.showModal("create")}>
             +
           </button>
         </div>

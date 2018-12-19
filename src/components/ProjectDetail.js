@@ -1,30 +1,33 @@
 import React, { Component } from "react";
 
-class CreateProject extends Component {
+class ProjectDetail extends Component {
   handleChange = this.handleChange.bind(this);
   handleSubmit = this.handleSubmit.bind(this);
   resetFields = this.resetFields.bind(this);
 
   state = {
-    title: "",
-    description: "",
     status: "Ej påbörjad"
   };
 
+  componentWillMount(){
+    this.setState(
+      {project:this.props.currentProject}
+    );
+  }
+
   handleChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    let event = e.target
+    this.setState((prevState) => ({
+      project:{
+        ...prevState.project,
+        [event.name]: event.value}
+    }));
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState(
-      () => {
-        this.props.createProject(this.state);
-        this.resetFields();
-      }
-    );
+    this.props.createProject(this.state.project);
+    this.resetFields();
   }
 
   resetFields() {
@@ -46,7 +49,8 @@ class CreateProject extends Component {
             type="text"
             placeholder="Titel"
             onChange={this.handleChange}
-            value={this.state.title}
+            value={this.state.project ? this.state.project.title : "" }
+            readOnly={this.props.modalState == "view"}
           />
           <input
           className="createProjectField"
@@ -54,13 +58,15 @@ class CreateProject extends Component {
             type="text"
             placeholder="Beskrivning"
             onChange={this.handleChange}
-            value={this.state.description}
+            value={this.state.project ? this.state.project.description : ""}
+            readOnly={this.props.modalState == "view"}
           />
           <input type="submit" />
         </form>
+        <button onClick = {() => this.props.showModal("edit", this.props.currentProject)}>Edit</button>
       </div>
     );
   }
 }
 
-export default CreateProject;
+export default ProjectDetail;

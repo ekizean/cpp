@@ -9,6 +9,7 @@ class ProjectList extends Component {
         <div className="projectList">
           {this.props.projectArray.map((p, i) => (
             <Project
+              showModal = {this.props.showModal}
               project={p}
               changeProjectStatus={this.props.changeProjectStatus}
               deleteProject={this.props.deleteProject}
