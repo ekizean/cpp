@@ -10,6 +10,7 @@ main {
   padding: 20px 40px;
   text-align: left;
   position: relative;
+  cursor: pointer;
 
   h2 {
     margin-bottom: 10px;
@@ -17,21 +18,20 @@ main {
   }
 
   &-delete {
-    background: none;
-    border: none;
-    color: darken($primary-grey, 10);
-    border-radius: 100%;
     margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    // position: absolute;
-    // right: 20px;
-    // bottom: 20px;
-    cursor: pointer;
 
-    &:hover {
-      color: darken($primary-grey, 20);
+    button {
+      color: darken($primary-grey, 10);
+      cursor: pointer;
+      background: none;
+      border: none;
+
+      &:hover {
+        color: darken($primary-grey, 20);
+      }
     }
   }
 
@@ -48,14 +48,21 @@ main {
     font-size: 1.4rem;
   }
 }
+* {
+  outline: none;
+}
 
 .Modal {
   @extend .project;
+  background-color: #f1f1f1;
   max-width: 550px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  &:focus {
+    outline: none;
+  }
 }
 
 .projectList {

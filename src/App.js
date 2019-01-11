@@ -14,10 +14,11 @@ class App extends Component {
   createProject = this.createProject.bind(this);
   deleteProject = this.deleteProject.bind(this);
   showModal = this.showModal.bind(this);
+  updateProject = this.updateProject.bind(this);
 
   state = {
     projectArray: [],
-    modalState:  false
+    modalState: false
   };
 
   changeProjectStatus(id, status) {
@@ -28,7 +29,7 @@ class App extends Component {
     this.setState(prevState => {
       return {
         projectArray: prevState.projectArray.map(p => {
-          if (p.id == id) {
+          if (p.id === id) {
             p.status = statusText;
           }
 
@@ -47,7 +48,22 @@ class App extends Component {
 
   createProject(newProject) {
     Database.ref("projects")
-      .push(newProject)
+      .push({
+        title: newProject.title,
+        description: newProject.description,
+        status: newProject.status
+      })
+      .then(this.readProjectsFromDatabase());
+    this.setState(() => ({ modalState: false }));
+  }
+
+  updateProject(project) {
+    Database.ref(`projects/${project.id}`)
+      .update({
+        title: project.title,
+        description: project.description,
+        status: project.status
+      })
       .then(this.readProjectsFromDatabase());
     this.setState({ modalState: false });
   }
@@ -59,7 +75,8 @@ class App extends Component {
         this.setState({
           projectArray: this.state.projectArray.filter(
             project => project.id !== id
-          )
+          ),
+          modalState: false
         })
       );
   }
@@ -72,11 +89,10 @@ class App extends Component {
 
         snapshot.forEach(snapshotChild => {
           projectArray.push({
-            id: snapshotChild.key,
-            ...snapshotChild.val()
+            ...snapshotChild.val(),
+            id: snapshotChild.key
           });
         });
-
         this.setState({
           projectArray
         });
@@ -95,23 +111,23 @@ class App extends Component {
           <Modal
             ariaHideApp={false}
             className="Modal"
-            isOpen={this.state.modalState != false}
+            isOpen={this.state.modalState !== false}
             onRequestClose={() => this.setState({ modalState: false })}
           >
-
-              <ProjectDetail 
-              createProject={this.createProject} 
-              modalState = {this.state.modalState} 
-              currentProject = {this.state.currentProject}
-              showModal = {this.showModal}
-              />
-
+            <ProjectDetail
+              createProject={this.createProject}
+              modalState={this.state.modalState}
+              currentProject={this.state.currentProject}
+              showModal={this.showModal}
+              deleteProject={this.deleteProject}
+              updateProject={this.updateProject}
+              changeProjectStatus={this.changeProjectStatus}
+            />
           </Modal>
           <ProjectList
             projectArray={this.state.projectArray}
             changeProjectStatus={this.changeProjectStatus}
-            deleteProject={this.deleteProject}
-            showModal = {this.showModal}
+            showModal={this.showModal}
           />
         </main>
         <Footer />
