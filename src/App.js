@@ -15,9 +15,11 @@ class App extends Component {
   deleteProject = this.deleteProject.bind(this);
   showModal = this.showModal.bind(this);
   updateProject = this.updateProject.bind(this);
+  filterProjects = this.filterProjects.bind(this);
 
   state = {
     projectArray: [],
+    filteredProjects: [],
     modalState: false
   };
 
@@ -94,9 +96,16 @@ class App extends Component {
           });
         });
         this.setState({
-          projectArray
+          projectArray,
+          filteredProjects: projectArray
         });
       });
+  }
+
+  filterProjects(search) {
+    this.setState(state => ({
+      filteredProjects: state.projectArray.filter(project => project.title.includes(search) || project.description.includes(search))
+    }));
   }
 
   componentDidMount() {
@@ -106,7 +115,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header showModal={this.showModal} />
+        <Header showModal={this.showModal} filterProjects={this.filterProjects}/>
         <main>
           <Modal
             ariaHideApp={false}
@@ -125,7 +134,7 @@ class App extends Component {
             />
           </Modal>
           <ProjectList
-            projectArray={this.state.projectArray}
+            projectArray={this.state.filteredProjects}
             changeProjectStatus={this.changeProjectStatus}
             showModal={this.showModal}
           />
