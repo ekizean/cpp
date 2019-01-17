@@ -17,7 +17,7 @@ class Header extends Component {
                 type="text"
                 placeholder="Sök här..."
                 autoFocus
-                onChange={(e) => this.props.filterProjects(e.target.value)}
+                onChange={(e) => this.props.setSearch(e.target.value)}
               />
               <input className="searchButton" value="Sök" type="submit" />
             </div>
