@@ -50,7 +50,7 @@ class ProjectDetail extends Component {
 
   render() {
     return (
-      <div>
+      <div className="modalItems">
         {/*<button
           className="project-status"
           onClick={
@@ -66,7 +66,7 @@ class ProjectDetail extends Component {
         </button> */}
         <form className="modalForm" onSubmit={this.handleSubmit}>
           <input
-            className={"createProjectField" + (this.props.modalState === "view" && " nonInteractive")}
+            className={"createProjectField titel" + (this.props.modalState === "view" && " nonInteractive")}
             name="title"
             type="text"
             placeholder="Titel"
@@ -75,19 +75,19 @@ class ProjectDetail extends Component {
             readOnly={this.props.modalState === "view"}
           />
           <textarea
-            className={"createProjectField" + (this.props.modalState === "view" && " nonInteractive")}
+            className={"createProjectField description" + (this.props.modalState === "view" && " nonInteractive")}
             name="description"
             type="text"
-            placeholder="Beskrivning"
+            placeholder="Beskrivning, kontaktuppgifter"
             onChange={this.handleChange}
             value={this.state.project ? this.state.project.description : ""}
             readOnly={this.props.modalState === "view"}
           />
           {this.props.modalState !== "view" && <input type="submit" />}
         </form>
-        {this.props.modalState !== 'create' &&
+        {this.props.modalState !== "create" && (
           <div>
-          {this.props.modalState !== 'edit' && (
+            {this.props.modalState !== "edit" && (
               <button
                 onClick={() =>
                   this.props.showModal("edit", this.props.currentProject)
@@ -95,18 +95,18 @@ class ProjectDetail extends Component {
               >
                 Edit
               </button>
-          )}
+            )}
             <div className="project-delete">
-                <button
-                  onClick={() =>
-                    this.props.deleteProject(this.props.currentProject.id)
-                  }
-                >
-                  <i className="fa fa-trash" />
-                </button>
+              <button
+                onClick={() =>
+                  this.props.deleteProject(this.props.currentProject.id)
+                }
+              >
+                <i className="fa fa-trash" />
+              </button>
             </div>
           </div>
-        }
+        )}
         <Projectstatus />
       </div>
     );
