@@ -49,7 +49,7 @@ class ProjectDetail extends Component {
 
   render() {
     return (
-      <div>
+      <div className="modalItems">
         {/*<button
           className="project-status"
           onClick={
@@ -64,8 +64,8 @@ class ProjectDetail extends Component {
           {this.state.project.status}
         </button> */}
         <form className="modalForm" onSubmit={this.handleSubmit}>
-          <input
-            className="createProjectField"
+          <textarea
+            className="createProjectField titel"
             name="title"
             type="text"
             placeholder="Titel"
@@ -74,17 +74,17 @@ class ProjectDetail extends Component {
             readOnly={this.props.modalState === "view"}
           />
           <textarea
-            className="createProjectField"
+            className="createProjectField description"
             name="description"
             type="text"
-            placeholder="Beskrivning"
+            placeholder="Beskrivning, kontaktuppgifter"
             onChange={this.handleChange}
             value={this.state.project ? this.state.project.description : ""}
             readOnly={this.props.modalState === "view"}
           />
-          <input type="submit" />
+          <input type="submit" value="Lägg till projekt" />
         </form>
-        {this.props.modalState !== 'create' &&
+        {this.props.modalState !== "create" && (
           <div>
             <button
               onClick={() =>
@@ -94,16 +94,16 @@ class ProjectDetail extends Component {
               Edit
             </button>
             <div className="project-delete">
-                <button
-                  onClick={() =>
-                    this.props.deleteProject(this.props.currentProject.id)
-                  }
-                >
-                  <i className="fa fa-trash" />
-                </button>
+              <button
+                onClick={() =>
+                  this.props.deleteProject(this.props.currentProject.id)
+                }
+              >
+                <i className="fa fa-trash" />
+              </button>
             </div>
           </div>
-        }
+        )}
         <Projectstatus />
       </div>
     );

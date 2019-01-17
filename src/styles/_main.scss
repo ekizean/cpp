@@ -54,6 +54,7 @@ main {
 
 .Modal {
   @extend .project;
+  padding: 25px 30px;
   background-color: #f1f1f1;
   max-width: 550px;
   position: absolute;
@@ -75,15 +76,27 @@ main {
   font-size: 30px;
 }
 
+.modalItems {
+}
+
 .modalForm {
   display: flex;
   flex-direction: column;
 }
 
-textarea.createProjectField {
-  resize: none;
+textarea.description {
   height: 100px;
   margin: 10px 0px;
+}
+
+textarea:focus {
+  border-color: rgb(75, 75, 75);
+}
+
+.createProjectField {
+  border-radius: 3px;
+  resize: none;
+  border-color: rgb(169, 169, 169);
 }
 
 @media (max-width: 750px) {
