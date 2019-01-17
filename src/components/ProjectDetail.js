@@ -36,6 +36,7 @@ class ProjectDetail extends Component {
     } else if (this.props.modalState === "edit") {
       this.props.updateProject(this.state.project);
     }
+    this.props.hideModal();
     this.resetFields();
   }
 
