@@ -17,6 +17,7 @@ class App extends Component {
   updateProject = this.updateProject.bind(this);
   setSearch = this.setSearch.bind(this);
   filterProjects = this.filterProjects.bind(this);
+  hideModal = this.hideModal.bind(this);
 
   state = {
     projectArray: [],
@@ -46,6 +47,12 @@ class App extends Component {
     this.setState({
       modalState: mode,
       currentProject: projectData
+    });
+  }
+
+  hideModal() {
+    this.setState({
+      modalState: false
     });
   }
 
@@ -137,6 +144,7 @@ class App extends Component {
               deleteProject={this.deleteProject}
               updateProject={this.updateProject}
               changeProjectStatus={this.changeProjectStatus}
+              hideModal={this.hideModal}
             />
           </Modal>
           <ProjectList
