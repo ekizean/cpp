@@ -139,13 +139,19 @@ textarea.description {
 }
 
 textarea:focus {
-  border-color: rgb(75, 75, 75);
+    border-color: rgb(75, 75, 75);
 }
 
 .createProjectField {
-  border-radius: 3px;
-  resize: none;
-  border-color: rgb(169, 169, 169);
+    border-radius: 3px;
+    resize: none;
+    border-color: rgb(169, 169, 169);
+}
+
+.nonInteractive {
+  background-color: transparent;
+  border: none;
+  cursor: default;
 }
 
 @media (max-width: 750px) {

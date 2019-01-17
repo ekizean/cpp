@@ -1,7 +1,32 @@
 .footer {
   padding: 5rem 0;
   background-color: none;
+  max-width: 80%;
+  margin: 0 auto;
 }
+
+.pics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} 
+
+.claremontpic {
+  height: 90px;
+  width: 225px;
+  margin-bottom: -10px;
+  margin-left: -30px;
+}
+.reactstuganpic {
+  height: 45px;
+  width: 385px;
+}
+@keyframes rotatelogo {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*snurander logga */
 .claremont-pic {
   padding: 0;
   animation-name: rotatelogo;
@@ -12,10 +37,4 @@
   width: 200px;
   padding: 20px;
   margin-top: 200px;
-}
-
-@keyframes rotatelogo {
-  100% {
-    transform: rotate(360deg);
-  }
 }
