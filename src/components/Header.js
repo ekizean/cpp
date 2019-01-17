@@ -9,7 +9,7 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="page-container">
-          <h1>Projektportalen</h1>
+          <h1>Claremont projektportal</h1>
           <form>
             <div className="searchContainer">
               <input
@@ -23,7 +23,7 @@ class Header extends Component {
             </div>
           </form>
           <button className="addButton" onClick={() => this.props.showModal("create")}>
-            +
+            <span>+</span>
           </button>
         </div>
       </div>

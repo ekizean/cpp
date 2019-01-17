@@ -82,17 +82,19 @@ class ProjectDetail extends Component {
             value={this.state.project ? this.state.project.description : ""}
             readOnly={this.props.modalState === "view"}
           />
-          <input type="submit" value="Lägg till projekt" />
+          {this.props.modalState !== "view" && <input type="submit" />}
         </form>
         {this.props.modalState !== "create" && (
           <div>
-            <button
-              onClick={() =>
-                this.props.showModal("edit", this.props.currentProject)
-              }
-            >
-              Edit
-            </button>
+            {this.props.modalState !== "edit" && (
+              <button
+                onClick={() =>
+                  this.props.showModal("edit", this.props.currentProject)
+                }
+              >
+                Edit
+              </button>
+            )}
             <div className="project-delete">
               <button
                 onClick={() =>
