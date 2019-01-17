@@ -7,13 +7,18 @@ const Project = props => {
       className="project"
       onClick={() => props.showModal("view", props.project)}
     >
-      <h2>{props.project.title}</h2>
-      {/* <Projectstatus
-        status={props.project.status}
-        changeProjectStatus={props.changeProjectStatus}
-        id={props.project.id}
-      /> */}
-      <p className="project-description">{props.project.description}</p>
+      <div className="project__content">
+        <h2>{props.project.title}</h2>
+        {/* <Projectstatus
+          status={props.project.status}
+          changeProjectStatus={props.changeProjectStatus}
+          id={props.project.id}
+        /> */}
+        <p className="project-description">{props.project.description}</p>
+      </div>
+      <footer className="project__footer">
+        <p>Killen Killensson</p>
+      </footer>
     </div>
   );
 };
