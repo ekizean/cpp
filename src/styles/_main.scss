@@ -70,8 +70,8 @@ main {
 .Modal {
   @extend .project;
   padding: 25px 30px;
-  background-color: #f1f1f1;
-  max-width: 550px;
+  background-color: $off-white;
+  width: 325px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -92,15 +92,47 @@ main {
 }
 
 .modalItems {
+
+  .edit {
+    border: none;
+    background-color: $dark;
+    padding: 7px 12px;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lighten($dark, 10);
+    }
+  }
 }
 
 .modalForm {
   display: flex;
   flex-direction: column;
+
+  textarea {
+    border: none;
+    padding: 5px 8px;
+  }
+
+  input {
+    border: none;
+    background-color: $accent;
+    padding: 7px 12px;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lighten($accent, 10);
+    }
+  }
+}
+
+textarea.titel {
+  font-size: 18px;
 }
 
 textarea.description {
-  height: 100px;
   margin: 10px 0px;
 }
 
