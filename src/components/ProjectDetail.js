@@ -73,6 +73,7 @@ class ProjectDetail extends Component {
             onChange={this.handleChange}
             value={this.state.project ? this.state.project.title : ""}
             readOnly={this.props.modalState === "view"}
+            rows="1"
           />
           <textarea
             className="createProjectField description"
@@ -82,13 +83,14 @@ class ProjectDetail extends Component {
             onChange={this.handleChange}
             value={this.state.project ? this.state.project.description : ""}
             readOnly={this.props.modalState === "view"}
+            rows="10"
           />
           {this.props.modalState !== "view" && <input type="submit" />}
         </form>
         {this.props.modalState !== "create" && (
           <div>
             {this.props.modalState !== "edit" && (
-              <button
+              <button className="edit"
                 onClick={() =>
                   this.props.showModal("edit", this.props.currentProject)
                 }
