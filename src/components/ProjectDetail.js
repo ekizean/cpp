@@ -66,7 +66,7 @@ class ProjectDetail extends Component {
         </button> */}
         <form className="modalForm" onSubmit={this.handleSubmit}>
           <input
-            className="createProjectField"
+            className={"createProjectField" + (this.props.modalState === "view" && " nonInteractive")}
             name="title"
             type="text"
             placeholder="Titel"
@@ -75,7 +75,7 @@ class ProjectDetail extends Component {
             readOnly={this.props.modalState === "view"}
           />
           <textarea
-            className="createProjectField"
+            className={"createProjectField" + (this.props.modalState === "view" && " nonInteractive")}
             name="description"
             type="text"
             placeholder="Beskrivning"
