@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="header">
@@ -13,6 +17,7 @@ class Header extends Component {
                 type="text"
                 placeholder="Sök här..."
                 autoFocus
+                onChange={(e) => this.props.filterProjects(e.target.value)}
               />
               <input className="searchButton" value="Sök" type="submit" />
             </div>
