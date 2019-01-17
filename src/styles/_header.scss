@@ -13,16 +13,17 @@
     grid-template-columns: 1fr 110px;
     height: 50px;
     width: 80%;
-    background-color: $primary-grey;
+    background-color: $off-white;
     border-radius: 25px;
     float: left;        
 }
 
 .searchInput {
-    background-color: $primary-grey;
+    background-color: $off-white;
     border: none;
     border-radius: 25px;
     font-size: 13px;
+    padding-left: 20px;
 
     &:focus {
         outline: none;
@@ -32,13 +33,18 @@
 .searchButton{
     border: none;
     border-radius: 0px 25px 25px 0px;
-    background-color: $primary-red;
+    background-color: $accent;
     color: white;
     font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lighten($accent, 10);
+    }
 }
 
 .addButton {
-    background-color: $primary-red;
+    background-color: $accent;
     margin-left: 10px;
     width: 50px;
     height: 50px;
@@ -46,4 +52,18 @@
     font-size: 24px;
     color: white;
     border: none;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+        background-color: lighten($accent, 10);
+    }
+
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 0;
+    }
 }
