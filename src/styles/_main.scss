@@ -75,6 +75,17 @@ main {
   font-size: 30px;
 }
 
+.modalForm {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea.createProjectField {
+  resize: none;
+  height: 100px;
+  margin: 10px 0px;
+}
+
 @media (max-width: 750px) {
   .projectList {
     grid-template-columns: repeat(1, 1fr);
