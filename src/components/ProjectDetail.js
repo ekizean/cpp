@@ -83,7 +83,7 @@ class ProjectDetail extends Component {
             value={this.state.project ? this.state.project.description : ""}
             readOnly={this.props.modalState === "view"}
           />
-          <input type="submit" />
+          {this.props.modalState != "view" && <input type="submit" />}
         </form>
         {this.props.modalState !== 'create' &&
           <div>
