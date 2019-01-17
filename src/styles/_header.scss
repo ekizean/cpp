@@ -36,11 +36,6 @@
   background-color: $accent;
   color: white;
   font-weight: bold;
-  cursor: pointer;
-
-  &:hover {
-    background-color: lighten($accent, 10);
-  }
 }
 
 .addButton {
