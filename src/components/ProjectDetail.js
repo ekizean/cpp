@@ -65,7 +65,7 @@ class ProjectDetail extends Component {
           {this.state.project.status}
         </button> */}
         <form className="modalForm" onSubmit={this.handleSubmit}>
-          <input
+          <textarea
             className={"createProjectField titel" + (this.props.modalState === "view" && " nonInteractive")}
             name="title"
             type="text"
@@ -98,18 +98,19 @@ class ProjectDetail extends Component {
                 Edit
               </button>
             )}
-            <div className="project-delete">
-              <button
-                onClick={() =>
-                  this.props.deleteProject(this.props.currentProject.id)
-                }
-              >
-                <i className="fa fa-trash" />
-              </button>
-            </div>
+            {this.props.modalState === 'edit' &&
+              <div className="project-delete">
+                <button
+                  onClick={() =>
+                    this.props.deleteProject(this.props.currentProject.id)
+                  }
+                >
+                  <i className="fa fa-trash" />
+                </button>
+              </div>
+            }
           </div>
         )}
-        <Projectstatus />
       </div>
     );
   }

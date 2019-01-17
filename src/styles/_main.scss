@@ -72,6 +72,7 @@ main {
   padding: 25px 30px;
   background-color: $off-white;
   width: 325px;
+  height: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -92,6 +93,10 @@ main {
 }
 
 .modalItems {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   .edit {
     border: none;
@@ -113,6 +118,7 @@ main {
   textarea {
     border: none;
     padding: 5px 8px;
+    font-family: inherit;
   }
 
   input {
@@ -128,11 +134,11 @@ main {
   }
 }
 
-textarea.titel {
+textarea.titelfalse, textarea.titel {
   font-size: 18px;
 }
 
-textarea.description {
+textarea.descriptionfalse, textarea.description {
   margin: 10px 0px;
 }
 
