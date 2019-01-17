@@ -50,7 +50,6 @@ class ProjectDetail extends Component {
   render() {
     return (
       <div>
-        Create project stuff
         {/*<button
           className="project-status"
           onClick={
@@ -64,7 +63,7 @@ class ProjectDetail extends Component {
         >
           {this.state.project.status}
         </button> */}
-        <form onSubmit={this.handleSubmit}>
+        <form className="modalForm" onSubmit={this.handleSubmit}>
           <input
             className="createProjectField"
             name="title"
@@ -74,7 +73,7 @@ class ProjectDetail extends Component {
             value={this.state.project ? this.state.project.title : ""}
             readOnly={this.props.modalState === "view"}
           />
-          <input
+          <textarea
             className="createProjectField"
             name="description"
             type="text"
@@ -83,9 +82,7 @@ class ProjectDetail extends Component {
             value={this.state.project ? this.state.project.description : ""}
             readOnly={this.props.modalState === "view"}
           />
-          {this.props.modalState !== 'view' &&
-            <input type="submit" />
-          }
+          {this.props.modalState !== "view" && <input type="submit" />}
         </form>
         {this.props.modalState !== 'create' &&
           <div>
