@@ -15,11 +15,11 @@ main {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  box-shadow: 0 5px 15px 0 rgba(0,0,0, 0.05);
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.05);
 
   h2 {
     margin-bottom: 10px;
-    font-size: 2.8rem;
+    font-size: 2rem;
   }
 
   &-delete {
@@ -67,8 +67,6 @@ main {
   outline: none;
 }
 
-
-
 .Modal {
   @extend .project;
   padding: 25px 30px;
@@ -114,6 +112,11 @@ textarea:focus {
   border-radius: 3px;
   resize: none;
   border-color: rgb(169, 169, 169);
+}
+
+.ReactModal__Overlay,
+.ReactModal__Overlay--after-open {
+  background-color: rgba(33, 31, 87, 0.75) !important;
 }
 
 @media (max-width: 750px) {
