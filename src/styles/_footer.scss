@@ -1,11 +1,10 @@
 .footer {
   padding: 5rem 0;
   background-color: none;
+  max-width: 80%;
+  margin: 0 auto;
 }
-.test {
-    max-width: 80%;
-    margin: 0 auto;
-}
+
 .pics {
   display: flex;
   justify-content: space-between;
