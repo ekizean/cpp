@@ -85,24 +85,26 @@ class ProjectDetail extends Component {
           />
           <input type="submit" />
         </form>
-        <button
-          onClick={() =>
-            this.props.showModal("edit", this.props.currentProject)
-          }
-        >
-          Edit
-        </button>
-        <div className="project-delete">
-          {this.props.modalState !== "create" && (
+        {this.props.modalState !== 'create' &&
+          <div>
             <button
               onClick={() =>
-                this.props.deleteProject(this.props.currentProject.id)
+                this.props.showModal("edit", this.props.currentProject)
               }
             >
-              <i className="fa fa-trash" />
+              Edit
             </button>
-          )}
-        </div>
+            <div className="project-delete">
+                <button
+                  onClick={() =>
+                    this.props.deleteProject(this.props.currentProject.id)
+                  }
+                >
+                  <i className="fa fa-trash" />
+                </button>
+            </div>
+          </div>
+        }
         <Projectstatus />
       </div>
     );
