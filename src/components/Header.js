@@ -10,7 +10,7 @@ class Header extends Component {
       <div className="header">
         <div className="page-container">
           <h1>Claremont projektportal</h1>
-          <form>
+          <form onSubmit={ (e) => e.preventDefault()}>
             <div className="searchContainer">
               <input
                 className="searchInput"
@@ -19,7 +19,7 @@ class Header extends Component {
                 autoFocus
                 onChange={(e) => this.props.setSearch(e.target.value)}
               />
-              <input className="searchButton" value="Sök" type="submit" />
+              <input className="searchButton" value="Sök här" type="submit" />
             </div>
           </form>
           <button className="addButton" onClick={() => this.props.showModal("create")}>
