@@ -5,7 +5,7 @@ main {
 
 .project {
   background-color: white;
-  border-radius: 20px;
+  border-radius: 30px;
   text-align: center;
   text-align: left;
   position: relative;
@@ -62,6 +62,16 @@ main {
 .project__footer {
   background-color: lighten($off-white, 4);
   padding: 20px 40px;
+  display: flex;
+  align-items: center;
+
+  .circle {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    background-color: $accent-2;
+    margin-right: 15px;
+  }
 }
 
 * {

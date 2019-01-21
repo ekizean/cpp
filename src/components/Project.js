@@ -17,7 +17,11 @@ const Project = props => {
         <p className="project-description">{props.project.description}</p>
       </div>
       <footer className="project__footer">
-        <p>Killen Killensson</p>
+        <div className="circle"/>
+        <div>
+          <p>TOR 1 JAN</p>
+          <p>Killen Killensson</p>
+        </div>
       </footer>
     </div>
   );
