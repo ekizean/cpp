@@ -10,7 +10,7 @@ main {
   text-align: left;
   position: relative;
   cursor: pointer;
-  min-height: 400px;
+  height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,7 +19,7 @@ main {
 
   h2 {
     margin-bottom: 10px;
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 
   &-delete {
@@ -49,13 +49,14 @@ main {
   }
 
   &-description {
-    margin-top: 20px;
-    font-size: 1.4rem;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-family: CircularStd-Book, sans-serif;
   }
 }
 
 .project__content {
-  padding: 20px 40px;
+  padding: 18px;
 }
 
 .project__footer {
@@ -134,22 +135,24 @@ main {
   }
 }
 
-textarea.titelfalse, textarea.titel {
+textarea.titelfalse,
+textarea.titel {
   font-size: 18px;
 }
 
-textarea.descriptionfalse, textarea.description {
+textarea.descriptionfalse,
+textarea.description {
   margin: 10px 0px;
 }
 
 textarea:focus {
-    border-color: rgb(75, 75, 75);
+  border-color: rgb(75, 75, 75);
 }
 
 .createProjectField {
-    border-radius: 3px;
-    resize: none;
-    border-color: rgb(169, 169, 169);
+  border-radius: 3px;
+  resize: none;
+  border-color: rgb(169, 169, 169);
 }
 
 .nonInteractive {
